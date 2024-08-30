@@ -125,7 +125,7 @@ To open it, first of all, shutdown the tablet (seems legit). Next, just use some
 
 Here is me opening the Bookeen Notéa.
 
-./CrackOpenBookeenNotea.mp4
+https://github.com/user-attachments/assets/3c401e47-f019-4d12-93be-462948686443
 
 ## Inside it, the PCB
 
