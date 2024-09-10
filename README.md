@@ -177,9 +177,8 @@ Now I can boot the Notéa and look on the UART output...
 Ooooooooooh Yes! That's my boy! Look at this fantastic logging lines I see right spitting from the Soc!
 
 <details>
-    <summary>See the Bookeen Notéa booting logs</summary>
+    <summary>----- See the Bookeen Notéa booting logs -----</summary>
 
-    ```
     [115]HELLO! BOOT0 is starting!
     [118]boot0 commit : 000a620ce443178c1a35bdeb5deeb23d3180f34f
 
@@ -361,7 +360,6 @@ Ooooooooooh Yes! That's my boy! Look at this fantastic logging lines I see right
     [    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
     [    0.000000] OF: fdt:Machine model: sun8iw15
     [    0.000000] bootconsole [earlycon0] enabled
-    ```
 </details>
 
 There are tons of information in this, but I'm really not an expert.
@@ -373,9 +371,8 @@ What I want is launching the FEL mode. Reading the linux-sunxi wiki, sending the
 I was a bit struggling with spamming a character on the UART, most of the time it just wrote a bunch of the lettre I've pressed at the end and nothing more. Maybe we would need something spamming faster than my tiny fingers? So I draw this terrible command: `while [ true ]; do echo -n 1 > /dev/ttyS1; done`, do not forget to set the baudrate of the UART : `stty -F /dev/ttyS1 115200` and give it a try.
 
 <details>
-    <summary>See the Bookeen Notéa booting logs when spamming a character</summary>
+    <summary>----- See the Bookeen Notéa booting logs when spamming a character -----</summary>
 
-    ```
     ERROR:   TEE-CORE: Panic at core/arch/arm/plat-sun8iw15p1/psci_sunxi.c:245 <psci_system_reset>
     ERROR:   TEE-CORE: Call stack:
     ERROR:   TEE-CORE:  0x486039a5
@@ -572,7 +569,6 @@ I was a bit struggling with spamming a character on the UART, most of the time i
     [    0.000000] OF: fdt:Machine model: sun8iw15
     [    0.000000] bootconsole [earlycon0] enabled
     ^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TR^TRR^TR^TR^TR^TR^TR^TR^TR^TR^TR
-    ```
 </details>
 
 The first lines you see (the `ERROR: TEE-CORE`...) appear when powering off the tablet.
