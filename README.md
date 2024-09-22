@@ -106,9 +106,9 @@ With adb you can now use `adb reboot bootloader`, it will freeze, and reboot to 
 Android Fastboot         Android Fastboot
 ```
 
-## Install a TWRP ?
+## Install a TWRP?
 
-It means you're connected ! So maybe you can flash en TWRP ? Well I think, but I'm really too fearful to try, as I mentionned on this nooby issue https://github.com/iscilyas/tolino_b300_twrp/issues/4
+It means you're connected ! So maybe you can flash en TWRP? Well I think, but I'm really too fearful to try, as I mentionned on this nooby issue https://github.com/iscilyas/tolino_b300_twrp/issues/4
 
 I don't know if a TWRP will help me for anything... I would want to backup the partitions first.
 
@@ -147,9 +147,9 @@ But it's sadly not the same touchscreen.
 There are connectors for connecting an "EMR" with a flat flexible cable that's unused. And another one that is used.
 Looking at the Pinenote PCB, it is the other way around.
 
-## FEL mode via UART ?
+## FEL mode via UART?
 
-I had no clue on how to access [the FEL mode](https://linux-sunxi.org/FEL) on my tablet... There's no SD Card, no volume buttons... So the only hope is UART ?
+I had no clue on how to access [the FEL mode](https://linux-sunxi.org/FEL) on my tablet... There's no SD Card, no volume buttons... So the only hope is UART?
 
 And if I look around, I could see a lot of four soldering pads... So I searched on the Internet to know if there are technics to find UART pads.
 And yes : sometimes the pads are labelled `G`, `R`, `T` and `V` for GND, RX, TX and VCC.
@@ -632,16 +632,41 @@ Warning: no 'soc_sram_info' data for your SoC (id=****)
 usb_bulk_send() ERROR -7: Operation timed out
 ```
 
-Or not? Wait?
+## Boot0, then nothing
 
-```
-$ sunxi-fel version
-Warning: no 'soc_sram_info' data for your SoC (id=****)
-usb_bulk_send() ERROR -7: Operation timed out
-```
+FEL mode is cool and everything but the only thing we can do with it is playing around with the memory and asking the SoC to execute something at a specific address...
 
-Oh no it just get disconnected... but it's sadly time to sleep. I'll retry another one.
-But I don't know what to do with that.
-My first goal was to dump all the partitions... I can't do that directly from the FEL protocol, so I guess I need to boot something first.
+We need more information about the tablet notably what hardware is used and where.
+So according to this page, we could dump some of that from the memory https://linux-sunxi.org/Retrieving_device_information#Retrieving_data_over_USB_in_FEL_mode but there's a problem.
+The reading fails because we enter FEL mode but boot1 has not been initialized, even if linux-sunxi wiki says that
 
-TO BE CONTINUED...
+> Boot1 is initialized using this method.
+
+The thing is that I did not see boot1 anywhere, even when booting normaly, does boot1 even exists?
+
+## From fastboot to efex?
+
+I discovered another method of booting in FEL mode (or it looks like it is) by using `fastboot oem fex`, then rebooting enter the tablet in FEL mode without initializing boot1 neither.
+
+## Kernel, U-Boot? It's GPL
+
+I looked around in hope of finding the U-Boot and Kernel used, notably looking at the version used written in the logs.
+
+The user on `adb shell` is named `virgo_perf1`.
+The kernel is build by `chichengzao`.
+The firmware version is `B300-o-mr1-v1.0rc2`.
+All that information make me turn around in my research.
+
+You know, Linux kernel and U-Boot are distributed under the GPL license wich is copyleft.
+So the modified version should be distributed under the same conditions... So I asked Bookeen, who already provide kernel and u-boot for there other e-readers.
+They kindly answered that they do not have access to the sources but that I could ask to the vendor : bigme.vip :no_mouth:
+
+Okay, I knew that Bigme and Bookeen and even Pine64 hardware was manufactured by the same entity. But here, Bookeen's vendor is directly Bigme.
+Looking for Bigme similar products, I could not find a tablet with the Bigme brand, with a B300 SoC and Android 8.1.
+The closest I could find runs Android 11.
+
+I've asked Bigme, let's wait for an anwser.
+
+In the meantime, I'm starting to write wiki pages on the linux-sunxi wiki.
+
+TO BE CONTINUED
