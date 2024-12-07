@@ -1,6 +1,3 @@
-> [!NOTE]
-> The story is not over
-
 # The awesome history of Florian hacking his Bookeen Notéa (an e-ink tablet)
 
 ## Why the Bookeen Notéa?
@@ -665,4 +662,29 @@ I've asked Bigme, let's wait for an anwser.
 
 In the meantime, I'm starting to write wiki pages on the linux-sunxi wiki.
 
-TO BE CONTINUED
+## It's been a while
+
+Well, I've stopped documenting what happenned, but I have bad news.
+
+Here is the linux-sunxi wiki page : https://linux-sunxi.org/Bookeen_Notea
+
+Of course, Bigme are not cooperative. I don't even know if they understood my request, so too bad.
+
+## Boot1 is a lie
+
+I did talk on the linux-sunxi IRC chat.
+
+Here are the lessons I learned:
+
+- What I want to do is too hard.
+- boot1 does not exist anymore.
+
+## PineNote!
+
+PineNote is back on sale.
+
+I bought one.
+
+I've definitely given up.
+
+Do you want a Bookeen Notéa with UART cables coming out of it?
