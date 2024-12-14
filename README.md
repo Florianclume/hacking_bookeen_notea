@@ -610,18 +610,15 @@ Let's now try `sunxi-fel`!
 
 ```
 $ sunxi-fel version
-Warning: no 'soc_sram_info' data for your SoC (id=****)
-AWUSBFEX soc=0000****(unknown) 00000001 ver=0001 44 08 scratchpad=00007e00 00000000 00000000
+Warning: no 'soc_sram_info' data for your SoC (id=1755)
+AWUSBFEX soc=00001755(unknown) 00000001 ver=0001 44 08 scratchpad=00007e00 00000000 00000000
 ```
-
-> [!NOTE]
-> I've redacted the SoC id. Don't ask, I'm just a jealous guy.
 
 It's working!! I can do things like reading RAM:
 
 ```
 $ sunxi-fel readl 0x004
-Warning: no 'soc_sram_info' data for your SoC (id=****)
+Warning: no 'soc_sram_info' data for your SoC (id=1755)
 usb_bulk_send() ERROR -7: Operation timed out
 ```
 
